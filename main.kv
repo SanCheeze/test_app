@@ -1,0 +1,51 @@
+MDNavigationLayout:
+
+    MDNavigationDrawer:
+        type: "modal"
+        id: nav_drawer
+
+        MDNavigationDrawerMenu:
+            MDNavigationDrawerHeader:
+                title: "Александр Сергеевич Сенцов"
+
+            
+            MDTextButton:
+                text: "Schedule"
+                on_release:
+                    screen_manager.current = "schedule_screen"
+                    top_bar.title = "Schedule"
+                    nav_drawer.set_state("close")
+
+
+            MDTextButton:
+                text: "News"
+                on_release:
+                    screen_manager.current = "news_screen"
+                    top_bar.title = "News"
+                    nav_drawer.set_state("close")
+
+    MDTopAppBar:
+        id: top_bar
+        title: "Schedule"
+        left_action_items: [["menu", lambda X: nav_drawer.set_state("open") if nav_drawer.state == "close" else nav_drawer.set_state("close")]]
+
+    ScreenManager:
+        id: screen_manager
+
+        MDScreen:
+            name: "schedule_screen"
+
+            MDBoxLayout:
+                MDLabel:
+                    text: 'Schedule'
+        
+        MDScreen:
+            name: "news_screen"
+
+            MDBoxLayout:
+                MDLabel:
+                    text: 'News'
+
+    
+    
+            
